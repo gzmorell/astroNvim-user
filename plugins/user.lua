@@ -9,4 +9,6 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+    "p00f/clangd_extensions.nvim",
+    "simrat39/rust-tools.nvim"
 }

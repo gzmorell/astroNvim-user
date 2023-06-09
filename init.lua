@@ -49,9 +49,31 @@ return {
         servers = {
             -- "pyright"
         },
+
+        setup_handlers = {
+            -- add custom handler
+            clangd = function(_, opts) require("clangd_extensions").setup { server = opts } end,
+            rust_analyzer = function(_, opts) require("rust-tools").setup { server = opts } end
+        },
         config = {
             clangd = {capabilities = {offsetEncoding = "utf-8"}}
-        }
+        },
+    },
+    plugins = {
+        "p00f/clangd_extensions.nvim", -- install lsp plugin
+        {
+          "williamboman/mason-lspconfig.nvim",
+          opts = {
+            ensure_installed = { "clangd" }, -- automatically install lsp
+          },
+        },
+        "simrat39/rust-tools.nvim", -- add lsp plugin
+        {
+            "williamboman/mason-lspconfig.nvim",
+            opts = {
+                ensure_installed = { "rust_analyzer" },
+            },
+        },
     },
 
     -- Configure require("lazy").setup() options
