@@ -22,4 +22,6 @@ if vim.fn.has "win32" == 1 then
     },
     event = "User AstroFile",
   }
+else
+  return {}
 end
